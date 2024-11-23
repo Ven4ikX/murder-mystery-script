@@ -1,0 +1,23 @@
+-- Авто-кілл
+spawn(function()
+    while true do
+        for _, v in pairs(game.Players:GetPlayers()) do
+            if v.Character and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).Magnitude <= 20 then
+                v.Character:BreakJoints()
+            end
+        end
+        wait(0.5)
+    end
+end)
+
+-- Авто-фарм монет
+spawn(function()
+    while true do
+        for _, coin in pairs(game.Workspace:GetDescendants()) do
+            if coin:IsA("Part") and coin.Name == "Coin" then
+                game.Players.LocalPlayer.Character.Humanoid:MoveTo(coin.Position)
+            end
+        end
+        wait(1)
+    end
+end)
